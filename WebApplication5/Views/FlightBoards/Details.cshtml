@@ -1,0 +1,26 @@
+﻿@model WebApplication5.Models.FlightBoard
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FlightBoard</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.boardName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.boardName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.flightBoardID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WebApplication5.Models.FlightBoard>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>choose your company flight board</h2>
+@if(Session["name"].ToString().Contains(" Admin")){ 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+}
+<!-- Search form -->
+<div class="md-form mt-0">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.boardName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.boardName)
+        </td>
+        @if(Session["name"].ToString().Contains(" Admin")){ 
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.flightBoardID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.flightBoardID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.flightBoardID })
+        </td>
+        }
+    </tr>
+    }
+
+</table>

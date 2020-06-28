@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class="contianer" style="padding-top:7px">
+
+    <div class="jumbotron" style="background-image:url(../../resources/plane-841441_1280.jpg)">
+        <h1>Welcome To Easy Flights </h1>
+        <p><class ="lead">This site will help you to find the best flights and even suggest you hot deals</p>
+        <hr class="my-4">
+
+        <form role="form" action="/Users/setLoginDetails" method="post">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <h3 style="padding-bottom:15px"> Log in to your account</h3>
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" class="form-control input-sm" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" onclick="func()" name="isAdmin"  class="custom-control-input" id="switch1">
+                        <label class="custom-control-label"  for="switch1">Admin</label>
+                    </div>
+                    <div style="padding-top:15px">
+                        <input type="submit" value="Login" class="btn btn-primary btn-lg btn-block">
+                        
+                    </div>
+                    <div class="d-flex justify-content-center links" style="padding-top:15px">
+                        Don't have an account? <a href="~/Users/Create" class="ml-2">Sign Up</a>
+
+                    </div>
+                    @Html.ValidationMessage("Eror",null,new{ @class="text text-danger"})
+
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <script>
+        function func() {
+            var pas = prompt("Please enter your personal pass ", "pass");
+            if (pas != 42) {
+                document.getElementById("switch1").checked=false;
+            }
+        }
+    </script>
+
+    <div class="row">
+
+        <div class="col-md-4 col-sm-6 col-s-12">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="~/resources/1_IueLj5pu4PqHZMQO1slOQg.jpeg" alt="Card image cap">
+                <h2 class="card-title">Need Hotel ?</h2>
+                <div class="card-body">
+                    <p>
+                        This site will provide you varity of hotels in your vaction country.
+                    </p>
+                    <p><a class="btn btn-primary" style="background-color:royalblue !important" href="https://www.booking.com/">Learn more &raquo;</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-s-12">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" style="height:10.2em" src="~/resources/1_-exC8NjmO5QKyM_G3n6_Tw.jpeg" alt="Card image cap">
+                <h2 class="card-title"> Hot Deals </h2>
+                <div class="card-body">
+                    <p>Click here to find the most 10 cheapest flights in our site. </p>
+                    <p><a class="btn btn-primary" style="background-color:salmon !important" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-s-12">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" style="height:10em" src="~/resources/TripAdvisor_for_Restaurants_Part_3-fb.png" alt="Card image cap">
+                <h2 class="card-title">Trip Planner</h2>
+                <div class="card-body">
+                    <p>This site will help you to plan your vaction and look for attractions.  </p>
+                    <p><a class="btn btn-primary" style="background-color:royalblue !important" href="https://www.tripadvisor.co.il/">Learn more &raquo;</a></p>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,23 @@
+﻿@if (Session["name"] == null)
+{
+    <div class="navbar-collapse collapse" id="navbarSupportedContent">
+        <ul class="nav navbar-nav ml-auto navbar-right">
+            <li class="nav-item">@Html.ActionLink("Register", "Create", "Users", null, new { @class = "nav-link", @style = "color:grey" })</li>
+            <li class="nav-item">@Html.ActionLink("Login", "Index", "Home", null, new { @class = "nav-link", @style = "color:grey" })</li>
+
+        </ul>
+    </div>
+
+}
+else
+{
+    <div class="navbar-collapse collapse" id="navbarSupportedContent">
+        <ul class="nav navbar-nav ml-auto navbar-right">
+            <li class="nav-item">@Html.ActionLink("Hey! " + Session["name"], "Index", "FlightBoards", null, new { @class = "nav-link", @style = "color:salmon" })</li>
+            <li class="nav-item">@Html.ActionLink("Logout", "logOut", "Users", null, new { @class = "nav-link", @style = "color:grey" })</li>
+
+        </ul>
+    </div>
+}
+
+

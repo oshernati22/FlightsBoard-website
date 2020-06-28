@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+
+
+   
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top " style="background-color:rgba(128, 128, 128, 0.00) !important" >
+        <div class="container">
+            
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="inavbar-toggler-icon" ></span>
+                </button>
+               
+                    @Html.ActionLink("Easy Flights", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style = "color:salmon" })
+              
+
+                    <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link", @style = "color:grey" })</li>
+                            <li class="nav-item">@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link", @style = "color:grey" })</li>
+                            <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link", @style = "color:grey" })</li>
+                            @if (Session["name"] != null)
+                            {
+                                <li class="nav-item">@Html.ActionLink("Flights Board", "Index", "FlightBoards", null, new { @class = "nav-link", @style = "color:grey" })</li>
+
+                            }
+
+                            @if(Session["name"] != null && (Session["name"].ToString().Contains(" Admin"))){
+                            <li class="nav-item">@Html.ActionLink("Users List", "Index", "Users", null, new { @class = "nav-link", @style = "color:grey" })</li>
+                            }
+                        </ul>
+                        @Html.Partial("RightSideNav")
+                    </div>
+</div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Easy Flights </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
