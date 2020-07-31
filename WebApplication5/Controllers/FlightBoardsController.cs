@@ -123,22 +123,13 @@ namespace WebApplication5.Controllers
             }
             base.Dispose(disposing);
         }
+        [HttpPost]
+        public ActionResult Search(string str) // need to fix it not working
+        { 
+            return View(db.FlightBoard.Where(flightboard => flightboard.boardName.Contains(str) || str == null).ToList());
+        }
 
-        /*public ActionResult Search(String  companyName )
-        {
-            List<FlightBoard> flightBoard = new List<FlightBoard>();
-            if (companyName == " ")
-                return RedirectToAction("Index");
-                foreach (Customer c in db.Customer)
-                {
-                    if (c.Name == name)
-                    {
-                        customers.Add(c);
-                    }
-                }
-                return View(customers);
-            
 
-        }*/
+
     }
 }

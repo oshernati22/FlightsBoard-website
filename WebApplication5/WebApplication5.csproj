@@ -178,11 +178,13 @@
     <Content Include="Content\Site.css" />
     <Content Include="resources\1_-exC8NjmO5QKyM_G3n6_Tw.jpeg" />
     <Content Include="resources\1_IueLj5pu4PqHZMQO1slOQg.jpeg" />
+    <Content Include="resources\7ef1e60b0ac83133ce577325f3ba4eba.jpg" />
+    <Content Include="resources\British-Airways.jpg" />
+    <Content Include="resources\elal.jpg" />
+    <Content Include="resources\pexels-photo-4429557.jpeg" />
     <Content Include="resources\plane-841441_1280.jpg" />
+    <Content Include="resources\thoughtful-asian-woman-using-photo-camera-on-blue-background-4429566 %281%29.jpg" />
     <Content Include="resources\TripAdvisor_for_Restaurants_Part_3-fb.png" />
-    <Content Include="resources\WhatsApp Image 2020-06-25 at 18.48.48 %281%29.jpeg" />
-    <Content Include="resources\WhatsApp Image 2020-06-25 at 18.48.48 %282%29.jpeg" />
-    <Content Include="resources\WhatsApp Image 2020-06-25 at 18.56.51.jpeg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />

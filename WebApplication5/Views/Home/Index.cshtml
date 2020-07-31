@@ -2,6 +2,13 @@
 @{
     ViewBag.Title = "Home Page";
 }
+<style>
+    .form-control:focus {
+        box-shadow: initial;
+        border-color: salmon;
+        border-width: 2px;
+    }
+</style>
 <div class="contianer" style="padding-top:7px">
 
     <div class="jumbotron" style="background-image:url(../../resources/plane-841441_1280.jpg)">
@@ -14,20 +21,20 @@
                 <div class="col-md-4 col-sm-6">
                     <h3 style="padding-bottom:15px"> Log in to your account</h3>
                     <div class="form-group">
-                        <input type="text" name="name" id="name" class="form-control input-sm" placeholder="Name">
+                        <input type="text" name="name" id="name" style="border-radius: 20px 20px 20px 20px;" class="form-control input-sm" placeholder="Name">
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                        <input type="password" name="password" style="border-radius: 20px 20px 20px 20px;" id="password" class="form-control input-sm" placeholder="Password">
                     </div>
-                    <div class="custom-control custom-switch">
+                    <div class="custom-control custom-switch" style="padding-left:18%">
                         <input type="checkbox" onclick="func()" name="isAdmin"  class="custom-control-input" id="switch1">
                         <label class="custom-control-label"  for="switch1">Admin</label>
                     </div>
                     <div style="padding-top:15px">
-                        <input type="submit" value="Login" class="btn btn-primary btn-lg btn-block">
+                        <input type="submit" value="Login" style="border-radius: 20px 20px 20px 20px;" class="btn btn-primary btn-lg btn-block">
                         
                     </div>
-                    <div class="d-flex justify-content-center links" style="padding-top:15px">
+                    <div class="d-flex  links" style="padding-top:15px; padding-left:12px">
                         Don't have an account? <a href="~/Users/Create" class="ml-2">Sign Up</a>
 
                     </div>
@@ -58,7 +65,7 @@
                     <p>
                         This site will provide you varity of hotels in your vaction country.
                     </p>
-                    <p><a class="btn btn-primary" style="background-color:royalblue !important" href="https://www.booking.com/">Learn more &raquo;</a></p>
+                    <p><a class="btn btn-primary" style="background-color:royalblue !important;border-radius: 20px 20px 20px 20px;" target="_blank" href="https://www.booking.com/">Learn more &raquo;</a></p>
                 </div>
             </div>
         </div>
@@ -68,7 +75,7 @@
                 <h2 class="card-title"> Hot Deals </h2>
                 <div class="card-body">
                     <p>Click here to find the most 10 cheapest flights in our site. </p>
-                    <p><a class="btn btn-primary" style="background-color:salmon !important" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+                    <p><a class="btn btn-primary" style="background-color:salmon !important ;border-color:salmon ;border-radius: 20px 20px 20px 20px;" target="_blank" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
                 </div>
             </div>
         </div>
@@ -78,7 +85,7 @@
                 <h2 class="card-title">Trip Planner</h2>
                 <div class="card-body">
                     <p>This site will help you to plan your vaction and look for attractions.  </p>
-                    <p><a class="btn btn-primary" style="background-color:royalblue !important" href="https://www.tripadvisor.co.il/">Learn more &raquo;</a></p>
+                    <p><a class="btn btn-primary" style="background-color:royalblue !important;border-radius: 20px 20px 20px 20px; " target="_blank" href="https://www.tripadvisor.co.il/">Learn more &raquo;</a></p>
                 </div>
             </div>
         </div>

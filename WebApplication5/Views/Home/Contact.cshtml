@@ -1,26 +1,27 @@
 ﻿<style>
     .mapouter {
         position: relative;
-        text-align: right;
-        height: 334px;
-        width: 438px;
+        text-align: center;
+        height: 390px;
+        width: 310px;
     }
 
     .gmap_canvas {
         overflow: hidden;
         background: none !important;
-        height: 334px;
-        width: 438px;
+        height: 390px;
+        width: 310px;
     }
+
     textarea {
         resize: none;
     }
 
     .form-label {
-        font-size: 12px;
-        color: #5e9bfc;
+        font-size: 20px;
+        color: salmon;
         margin: 0;
-        display: block;
+        display: none;
         opacity: 1;
         -webkit-transition: .333s ease top, .333s ease opacity;
         transition: .333s ease top, .333s ease opacity;
@@ -32,11 +33,13 @@
         border-width: 0 0 2px 0;
         border-style: none none solid none;
         box-shadow: none;
+        background-color: transparent !important;
     }
 
-        .form-control:focus {
+        .form-control:focus, .form-control:hover {
             box-shadow: none;
-            border-color: #5e9bfc;
+            border-color: salmon;
+            display: block;
         }
 
     .js-hide-label {
@@ -49,9 +52,9 @@
 
     .btn-start-order {
         background: 0 0 #ffffff;
-        border: 1px solid #2f323a;
+        border: 1px solid #ccc;
         border-radius: 3px;
-        color: #2f323a;
+        color: black;
         font-family: "Raleway", sans-serif;
         font-size: 16px;
         line-height: inherit;
@@ -59,31 +62,27 @@
         padding: 10px 50px;
         text-transform: uppercase;
         transition: all 0.25s ease 0s;
+        background-color: transparent;
     }
 
         .btn-start-order:hover, .btn-start-order:active, .btn-start-order:focus {
-            border-color: #5e9bfc;
-            color: #5e9bfc;
+            border-color: salmon;
+            color: salmon;
         }
-
-  
-
-    
 </style>
 
 <div class="contianer">
     <div class="row">
         <div class="col-md-12">
-            <div class="jumbotron" style="background-image:url(https://images.pexels.com/photos/4429557/pexels-photo-4429557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940),url(https://images.pexels.com/photos/4429566/pexels-photo-4429566.jpeg?cs=srgb&dl=thoughtful-asian-woman-using-photo-camera-on-blue-background-4429566.jpg&fm=jpg);  background-repeat: no-repeat;background-size:contain;  background-position: right center, center left;">
+            <div class="jumbotron" style="background-image:url(../../resources/pexels-photo-4429557.jpeg),url('../../resources/thoughtful-asian-woman-using-photo-camera-on-blue-background-4429566 (1).jpg');  background-repeat: no-repeat;background-size:contain;  background-position: right center, center left;">
                 <h1> Contact</h1>
                 <hr class="my-4">
-                <address style="color:salmon">
+                <address>
                     Easy Flights<br />
-                    Harzit 12, Rishon Lezion<br />
+                    Eli Vizel 2, Rishon Lezion<br />
                     <abbr title="Phone">Phone:</abbr>
                     +972-50-944-4441
                 </address>
-
                 <address>
                     <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@EasyFlights.com</a><br />
                     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@EasyFlights.com</a>
@@ -91,105 +90,70 @@
             </div>
         </div>
     </div>
-    <div class="row" >
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-            <h2 >Get In Touch</h2>
-            <hr class="my-4">
-        </div>
-    </div>
     <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
-            <form id="contact-form" class="form" action="#" method="POST" role="form">
-                <div class="form-group">
-                    <label class="form-label" for="name">Your Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Your name" tabindex="1" required>
+        <div class="col-md-12">
+            <div class="jumbotron" style="background-image:url(../../resources/pexels-photo-4429557.jpeg);  background-repeat: no-repeat;background-size:300em;  ">
+                <h2>Get In Touch</h2>
+                <hr class="my-4" />
+                <div class="row">
+                    <div class="col-md-5">
+                        <form id="contact-form" class="form" action="#" method="POST" role="form">
+                            <div class="form-group">
+                                <label class="form-label" id="name1" for="name">Your Name</label>
+                                <input type="text" class="form-control" onclick="funcName()" id="name" name="name" placeholder="Your name" tabindex="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" id="email1" for="email">Your Email</label>
+                                <input type="email" class="form-control" onclick="funcEmail()" id="email" name="email" placeholder="Your Email" tabindex="2" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" id="subject1" for="subject">Subject</label>
+                                <input type="text" class="form-control" onclick="funcSubject()" id="subject" name="subject" placeholder="Subject" tabindex="3">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" id="message1" for="message">Message</label>
+                                <textarea rows="5" cols="50" name="message" onclick="funcMessage()" class="form-control" id="message" placeholder="Message..." tabindex="4" required></textarea>
+                            </div>
+                            <div class="text-left">
+                                <button type="submit" class="btn btn-start-order" style="border-radius:20px 20px 20px 20px">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="mapouter">
+                                <div class="gmap_canvas"><iframe width="310" height="390" id="gmap_canvas" src="https://maps.google.com/maps?q=college%20of%20managment%20rishon%20lezion&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.whatismyip-address.com/nordvpn-coupon/">nordvpn coupon codes</a></div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="form-label" for="email">Your Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" tabindex="2" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="subject">Subject</label>
-                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" tabindex="3">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="message">Message</label>
-                    <textarea rows="5" cols="50" name="message" class="form-control" id="message" placeholder="Message..." tabindex="4" required></textarea>
-                </div>
-                <div class="text-left">
-                    <button type="submit" class="btn btn-start-order">Send Message</button>
-                </div>
-            </form>
-        </div>
-        <div class="mapouter">
-            <div class="gmap_canvas"><iframe width="438" height="334" id="gmap_canvas" src="https://maps.google.com/maps?q=31.9743965%2C34.7874327&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.whatismyip-address.com/divi-discount/"></a></div>
-        </div>
+            </div>
+      </div>
     </div>
 
+ </div>
   
 
-</div>
+
+
+
+
 <script>
-    $(document).ready(function () {
-        // Test for placeholder support
-        $.support.placeholder = (function () {
-            var i = document.createElement('input');
-            return 'placeholder' in i;
-        })();
+    function funcEmail() {
 
-        // Hide labels by default if placeholders are supported
-        if ($.support.placeholder) {
-            $('.form-label').each(function () {
-                $(this).addClass('js-hide-label');
-            });
+        document.getElementById("email1").style.display = "block"
+    }
+    function funcName() {
 
-            // Code for adding/removing classes here
-            $('.form-group').find('input, textarea').on('keyup blur focus', function (e) {
+        document.getElementById("name1").style.display = "block"
+    }
+    function funcSubject() {
 
-                // Cache our selectors
-                var $this = $(this),
-                    $label = $this.parent().find("label");
+        document.getElementById("subject1").style.display = "block"
+    }
+    function funcMessage() {
 
-                switch (e.type) {
-                    case 'keyup': {
-                        $label.toggleClass('js-hide-label', $this.val() == '');
-                    } break;
-                    case 'blur': {
-                        if ($this.val() == '') {
-                            $label.addClass('js-hide-label');
-                        } else {
-                            $label.removeClass('js-hide-label').addClass('js-unhighlight-label');
-                        }
-                    } break;
-                    case 'focus': {
-                        if ($this.val() !== '') {
-                            $label.removeClass('js-unhighlight-label');
-                        }
-                    } break;
-                    default: break;
-                }
-                // previous implementation with ifs
-                /*if (e.type == 'keyup') {
-                    if( $this.val() == '' ) {
-                        $parent.addClass('js-hide-label'); 
-                    } else {
-                        $parent.removeClass('js-hide-label');   
-                    }                     
-                } 
-                else if (e.type == 'blur') {
-                    if( $this.val() == '' ) {
-                        $parent.addClass('js-hide-label');
-                    } 
-                    else {
-                        $parent.removeClass('js-hide-label').addClass('js-unhighlight-label');
-                    }
-                } 
-                else if (e.type == 'focus') {
-                    if( $this.val() !== '' ) {
-                        $parent.removeClass('js-unhighlight-label');
-                    }
-                }*/
-            });
-        }
-    });
+        document.getElementById("message1").style.display = "block"
+    }
 </script>
