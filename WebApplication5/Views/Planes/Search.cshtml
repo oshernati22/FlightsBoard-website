@@ -1,31 +1,18 @@
 ﻿@model IEnumerable<WebApplication5.Models.Plane>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Search";
 }
 
-<h2>Index</h2>
+<h2>Search</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
-<div>
-    <form role="form" action="/Planes/Search" method="post">
-        <div class="form-group">
-            <input type="text" name="name" id="name" placeholder="Search">
-            <input type="submit" value="Search">
-        </div>
-    </form>
-</div>
-
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.company)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.planeID)
         </th>
         <th></th>
     </tr>
@@ -34,9 +21,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.company)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.planeID)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.planeID }) |

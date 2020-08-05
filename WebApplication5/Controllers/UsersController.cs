@@ -58,10 +58,11 @@ namespace WebApplication5.Controllers
             {
                 db.User.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index","Home");
+                TempData["Message"] = "Success";
+                return RedirectToAction("Create","Users");
             }
-
-            return View(user);
+            TempData["Message"] = "Error";
+            return RedirectToAction("Create", "Users");
         }
 
         // GET: Users/Edit/5
@@ -122,6 +123,24 @@ namespace WebApplication5.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Search(string name)
+        {
+            List<User> users = new List<User>();
+            if (name == null || name == "")
+                return RedirectToAction("Index", "Users");
+            else
+            {
+                foreach (User c in db.User)
+                {
+                    if (c.name == name)
+                    {
+                        users.Add(c);
+                    }
+                }
+                return View(users);
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -141,7 +160,7 @@ namespace WebApplication5.Controllers
             
             if (db.User.Where(user => user.name == name && user.password == password && user.type == flag).FirstOrDefault() == null) /*https://www.youtube.com/watch?v=aWX77vN1e3U */
             {
-                 
+                TempData["Message"] = "Error";
                 return RedirectToAction("Index", "Home");
             }
             else if (flag == true)

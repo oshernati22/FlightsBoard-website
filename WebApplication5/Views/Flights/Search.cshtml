@@ -1,25 +1,14 @@
 ﻿@model IEnumerable<WebApplication5.Models.Flight>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Search";
 }
 
-<h2>Index</h2>
+<h2>Search</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
-<div>
-    <form role="form" action="/Flights/Search" method="post">
-        <div class="form-group">
-            <input type="text" name="from" id="from" placeholder="Search by from">
-            <input type="text" name="to" id="to" placeholder="Search by to">
-            <input type="submit" value="Search">
-        </div>
-    </form>
-</div>
-
 <table class="table">
     <tr>
         <th>

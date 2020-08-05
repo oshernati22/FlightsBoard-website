@@ -137,6 +137,24 @@ namespace WebApplication5.Controllers
             TempData["Message"] = "Success";
             return RedirectToAction("Contact", "Home");
         }
+       
+        public ActionResult Search(string name)
+        {
+            List<Contact> contacts = new List<Contact>();
+            if (name == null || name == "")
+                return RedirectToAction("Index","Contacts");
+            else
+            {
+                foreach (Contact c in db.contact)
+                {
+                    if (c.name == name)
+                    {
+                        contacts.Add(c);
+                    }
+                }
+                return View(contacts);
+            }
+        }
 
     }
 }

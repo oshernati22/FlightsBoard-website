@@ -45,9 +45,9 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.type, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            <div class="checkbox"  id="checkboxswitch" onclick="switchBox()">
+                            <div class="checkbox" id="checkboxswitch" onclick="switchBox()">
 
-                               @Html.EditorFor(model => model.type, "", new { }) 
+                                @Html.EditorFor(model => model.type, "", new { })
                                 @Html.ValidationMessageFor(model => model.type, "", new { @class = "text-danger" })
 
                             </div>
@@ -62,8 +62,8 @@
                                     if (pas == 42) {
                                         break;
                                     }
-                                     
-                                     
+
+
                                 }
                                 if (pas != 42) {
                                     Swal.fire({
@@ -88,6 +88,20 @@
                             <input type="reset" value="Reset" class="btn btn-dark" />
                         </div>
                     </div>
+                    @if (TempData["Message"] == "Success")
+                    {
+                        <script>
+                             Swal.fire({
+                                  icon: 'success', title: 'Your user has been saved Successfully ', showConfirmButton: true,
+                            })</script>
+                    } else if (TempData["Message"] == "Error")
+                    {
+                        <script>
+                            Swal.fire({
+                                icon: 'error', title: 'Something went wrong!', showConfirmButton: true,
+                            })</script>
+                    }
+
                 </div>
                 }
             </div>

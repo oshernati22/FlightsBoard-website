@@ -5,18 +5,20 @@
 }
 
 <h2>choose your company flight board</h2>
-@if(Session["name"].ToString().Contains(" Admin")){ 
+@if (Session["name"].ToString().Contains(" Admin"))
+{
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 }
-
-<br /> <br />
-
-@using (Html.BeginForm("Search", "FlightBoards", FormMethod.Get)) //neet to fix it
-{
-    @Html.TextBox("str")<input type="submit" value="Search" />
-}
+<div>
+    <form role="form" action="/FlightBoards/Search" method="post">
+        <div class="form-group">
+            <input type="text" name="boardname" id="name" placeholder="Search by board name">
+            <input type="submit" value="Search">
+        </div>
+    </form>
+</div>
 
 <table class="table">
     <tr>

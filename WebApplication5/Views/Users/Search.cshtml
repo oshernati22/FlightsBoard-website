@@ -1,24 +1,14 @@
 ﻿@model IEnumerable<WebApplication5.Models.User>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Search";
 }
 
-<h2>Index</h2>
+<h2>Search</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
-<div>
-    <form role="form" action="/Users/Search" method="post">
-        <div class="form-group">
-            <input type="text" name="name" id="name" placeholder="Search">
-            <input type="submit" value="Search">
-        </div>
-    </form>
-</div>
-
 <table class="table">
     <tr>
         <th>
@@ -29,6 +19,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.confirmpassword)
         </th>
         <th></th>
     </tr>
@@ -43,6 +36,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.confirmpassword)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.userID }) |

@@ -136,5 +136,25 @@ namespace WebApplication5.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Search(string from, string to)
+        {
+            List<Flight> flights = new List<Flight>();
+            if ((from == null || from == "") || (to == null || to == ""))
+                return RedirectToAction("Index", "FlightAttendant");
+            else if ((from == null || from == "") && (to == null || to == ""))
+                return RedirectToAction("Index", "FlightAttendant");
+            else
+            {
+                foreach (Flight c in db.Flight)
+                {
+                    if ((c.from == from) && ( c.to == to))
+                    {
+                        flights.Add(c);
+                    }
+                }
+                return View(flights);
+            }
+        }
     }
 }

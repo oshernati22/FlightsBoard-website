@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<WebApplication5.Models.Contact>
 
+
 @{
     ViewBag.Title = "Index";
 }
@@ -9,6 +10,14 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<div>
+    <form role="form" action="/Contacts/Search" method="post">
+        <div class="form-group">
+            <input type="text" name="name" id="name" placeholder="Search">
+            <input type="submit" value="Search">
+        </div>
+    </form>
+</div>
 <table class="table">
     <tr>
         <th>
@@ -26,26 +35,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.subject)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.messenge)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ContactId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ContactId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ContactId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.messenge)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ContactId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ContactId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ContactId })
+            </td>
+        </tr>
+    }
 
 </table>

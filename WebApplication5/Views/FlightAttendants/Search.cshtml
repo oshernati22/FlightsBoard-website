@@ -1,24 +1,14 @@
 ﻿@model IEnumerable<WebApplication5.Models.FlightAttendant>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Search";
 }
 
-<h2>Index</h2>
+<h2>Search</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
-<div>
-    <form role="form" action="/FlightAttendants/Search" method="post">
-        <div class="form-group">
-            <input type="text" name="name" id="name" placeholder="Search">
-            <input type="submit" value="Search">
-        </div>
-    </form>
-</div>
-
 <table class="table">
     <tr>
         <th>

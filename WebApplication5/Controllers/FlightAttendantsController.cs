@@ -123,5 +123,23 @@ namespace WebApplication5.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Search(string name)
+        {
+            List<FlightAttendant> flightsatt = new List<FlightAttendant>();
+            if (name == null || name == "")
+                return RedirectToAction("Index", "FlightAttendant");
+            else
+            {
+                foreach (FlightAttendant c in db.FlightAttendant)
+                {
+                    if (c.name == name)
+                    {
+                        flightsatt.Add(c);
+                    }
+                }
+                return View(flightsatt);
+            }
+        }
     }
 }
