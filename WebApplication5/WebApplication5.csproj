@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\FlightAttendantsController.cs" />
     <Compile Include="Controllers\FlightBoardsController.cs" />
     <Compile Include="Controllers\FlightsController.cs" />
@@ -155,7 +156,12 @@
     <Compile Include="Migrations\202006281250484_osherdidthis4.designer.cs">
       <DependentUpon>202006281250484_osherdidthis4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007311848088_osheraddclass.cs" />
+    <Compile Include="Migrations\202007311848088_osheraddclass.designer.cs">
+      <DependentUpon>202007311848088_osheraddclass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\FlightAttendant.cs" />
     <Compile Include="Models\FlightBoard.cs" />
@@ -340,6 +346,11 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\RightSideNav.cshtml" />
+    <Content Include="Views\Contacts\Create.cshtml" />
+    <Content Include="Views\Contacts\Delete.cshtml" />
+    <Content Include="Views\Contacts\Details.cshtml" />
+    <Content Include="Views\Contacts\Edit.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -370,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006281250484_osherdidthis4.resx">
       <DependentUpon>202006281250484_osherdidthis4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007311848088_osheraddclass.resx">
+      <DependentUpon>202007311848088_osheraddclass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

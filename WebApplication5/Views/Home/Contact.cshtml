@@ -97,7 +97,7 @@
                 <hr class="my-4" />
                 <div class="row">
                     <div class="col-md-5">
-                        <form id="contact-form" class="form" action="#" method="POST" role="form">
+                        <form id="contact-form" class="form" action="/Contacts/setMessagesDetails" method="POST" role="form">
                             <div class="form-group">
                                 <label class="form-label" id="name1" for="name">Your Name</label>
                                 <input type="text" class="form-control" onclick="funcName()" id="name" name="name" placeholder="Your name" tabindex="1" required>
@@ -115,7 +115,12 @@
                                 <textarea rows="5" cols="50" name="message" onclick="funcMessage()" class="form-control" id="message" placeholder="Message..." tabindex="4" required></textarea>
                             </div>
                             <div class="text-left">
-                                <button type="submit" class="btn btn-start-order" style="border-radius:20px 20px 20px 20px">Send Message</button>
+                                <button type="submit" id="submit" class="btn btn-start-order" style="border-radius:20px 20px 20px 20px">Send Message</button>
+                                @if(TempData["Message"] != null)
+                                {
+                                  <script>Swal.fire({ icon: 'success',  title: 'Your message has been saved',    showConfirmButton: true,
+                                           }) </script>
+                                }
                             </div>
                         </form>
                     </div>
@@ -125,6 +130,8 @@
                                 <div class="gmap_canvas"><iframe width="310" height="390" id="gmap_canvas" src="https://maps.google.com/maps?q=college%20of%20managment%20rishon%20lezion&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.whatismyip-address.com/nordvpn-coupon/">nordvpn coupon codes</a></div>
                             </div>
                         </div>
+
+                        
 
                     </div>
                 </div>
@@ -156,4 +163,7 @@
 
         document.getElementById("message1").style.display = "block"
     }
+   
+  
+
 </script>

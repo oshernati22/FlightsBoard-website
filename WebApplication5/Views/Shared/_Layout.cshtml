@@ -7,10 +7,11 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
- 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 
-   
+
+
 
 </head>
 
@@ -36,8 +37,10 @@
 
                             }
 
-                            @if(Session["name"] != null && (Session["name"].ToString().Contains(" Admin"))){
-                            <li class="nav-item">@Html.ActionLink("Users List", "Index", "Users", null, new { @class = "nav-link", @style = "color:grey" })</li>
+                            @if (Session["name"] != null && (Session["name"].ToString().Contains(" Admin")))
+                            {
+                                <li class="nav-item">@Html.ActionLink("Users List", "Index", "Users", null, new { @class = "nav-link", @style = "color:grey" })</li>
+                                <li class="nav-item">@Html.ActionLink("Messages", "Index", "Contacts", null, new { @class = "nav-link", @style = "color:grey" })</li>
                             }
                         </ul>
                         @Html.Partial("RightSideNav")

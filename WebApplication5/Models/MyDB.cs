@@ -17,5 +17,8 @@ namespace WebApplication5.Models
         public DbSet<FlightAttendant> FlightAttendant  { get; set; }
 
         public DbSet<Flight> Flight { get; set; }
+
+        public DbSet<Contact> contact { get; set; }
+
     }
 }
