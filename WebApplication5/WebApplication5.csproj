@@ -357,6 +357,8 @@
     <Content Include="Views\Flights\Search.cshtml" />
     <Content Include="Views\Planes\Search.cshtml" />
     <Content Include="Views\Users\Search.cshtml" />
+    <Content Include="Views\FlightBoards\displayFlights.cshtml" />
+    <Content Include="Views\FlightBoards\SearchFlights.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

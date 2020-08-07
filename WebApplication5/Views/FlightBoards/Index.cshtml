@@ -7,9 +7,9 @@
 <h2>choose your company flight board</h2>
 @if (Session["name"].ToString().Contains(" Admin"))
 {
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
 }
 <div>
     <form role="form" action="/FlightBoards/Search" method="post">
@@ -20,28 +20,56 @@
     </form>
 </div>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.boardName)
-        </th>
-        <th></th>
-    </tr>
 
+<form role="form"  action="/FlightBoards/displayFlights" method="post">
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.boardName)
-        </td>
-        @if(Session["name"].ToString().Contains(" Admin")){ 
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.flightBoardID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.flightBoardID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.flightBoardID })
-        </td>
-        }
-    </tr>
+        <div class="form-group">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="@Html.DisplayFor(modelItem => item.boardName)">
+            <label class="form-check-label" name="selctor[]" for="inlineCheckbox1">@Html.DisplayFor(modelItem => item.boardName)</label>
+        </div>
+
+    }
+    <input type="button" onclick="func()" id="save_value" value="save" style="border-radius: 20px 20px 20px 20px;" class="btn btn-primary btn-lg btn-block">
+</form>
+<script>
+    function func() {
+        var val = [];
+        $(':checkbox:checked').each(function (i) {
+            val[i] = $(this).val();
+        
+        });
+        window.location = "/FlightBoards/displayFlights?names=" + val;
+      
     }
 
-</table>
+</script>
+
+ @if (Session["name"].ToString().Contains(" Admin"))
+ {
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.boardName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.boardName)
+                </td>
+                
+                 <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.flightBoardID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.flightBoardID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.flightBoardID })
+                 </td>
+                
+            </tr>
+        }
+
+    </table>
+ }

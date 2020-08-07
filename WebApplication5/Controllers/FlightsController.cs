@@ -137,18 +137,19 @@ namespace WebApplication5.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult Search(string from, string to)
+        public ActionResult Search(string from, string to, String flightId)
         {
             List<Flight> flights = new List<Flight>();
-            if ((from == null || from == "") || (to == null || to == ""))
+            if ((from == null || from == "") || (to == null || to == "") || (flightId == null || flightId == ""))
                 return RedirectToAction("Index", "FlightAttendant");
-            else if ((from == null || from == "") && (to == null || to == ""))
+            else if ((from == null || from == "") && (to == null || to == "") && (flightId == null || flightId == ""))
                 return RedirectToAction("Index", "FlightAttendant");
             else
             {
+                 int intOFlightId = Int32.Parse(flightId);
                 foreach (Flight c in db.Flight)
                 {
-                    if ((c.from == from) && ( c.to == to))
+                    if ((c.from == from) && ( c.to == to) && (c.flightNumber == intOFlightId))
                     {
                         flights.Add(c);
                     }

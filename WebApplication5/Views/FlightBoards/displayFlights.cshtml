@@ -1,0 +1,81 @@
+﻿@model IEnumerable<WebApplication5.Models.Flight>
+
+@{
+    ViewBag.Title = "displayFlights";
+}
+
+
+<h2>displayFlights</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div>
+    <form role="form" action="/FlightBoards/SearchFlights" method="post">
+        <div class="form-group">
+            <input type="text" name="from" id="from" placeholder="Search by from">
+            <input type="text" name="to" id="to" placeholder="Search by to">
+            <input type="text" name="flightId" id="to" placeholder="Search by flight number" />
+            <input type="submit" value="Search">
+        </div>
+    </form>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.flightAttendant.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.flightBoard.boardName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.plane.company)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.flightNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.from)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.to)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.flightAttendant.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.flightBoard.boardName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.plane.company)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.flightNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.from)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.to)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.flightId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.flightId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.flightId })
+            </td>
+        </tr>
+    }
+
+</table>

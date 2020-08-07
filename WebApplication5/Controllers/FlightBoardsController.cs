@@ -142,8 +142,46 @@ namespace WebApplication5.Controllers
             }
         }
 
+        public ActionResult displayFlights(String names)
+        {
+            List<string> boardnames = names.Split(',').ToList();
+            List<Flight> flights = new List<Flight>();
+            foreach (String boardname in boardnames)
+            {
+                foreach (FlightBoard c in db.FlightBoard)
+                {
+                    if (c.boardName == boardname)
+                        flights.AddRange(c.flightsList);
+                }
+            }
+            return View(flights);
 
+        }
 
-
+        public ActionResult SearchFlights(string from, string to, String flightId)
+        {
+            List<Flight> flights = new List<Flight>();
+            if ((from == null || from == "") || (to == null || to == "") || (flightId == null || flightId == ""))
+                return RedirectToAction("Index", "FlightAttendant");
+            else if ((from == null || from == "") && (to == null || to == "") && (flightId == null || flightId == ""))
+                return RedirectToAction("Index", "FlightAttendant");
+            else
+            {
+                int intOFlightId = Int32.Parse(flightId);
+                foreach (Flight c in db.Flight)
+                {
+                    if ((c.from == from) && (c.to == to) && (c.flightNumber == intOFlightId))
+                    {
+                        flights.Add(c);
+                    }
+                }
+                return View(flights);
+            }
+        }
     }
+
+
+
+
 }
+

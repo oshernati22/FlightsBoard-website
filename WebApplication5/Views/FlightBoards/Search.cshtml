@@ -4,6 +4,7 @@
     ViewBag.Title = "Search";
 }
 
+
 <h2>Search</h2>
 
 <p>
@@ -17,17 +18,18 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.boardName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.flightBoardID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.flightBoardID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.flightBoardID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.boardName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.flightBoardID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.flightBoardID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.flightBoardID })
+            </td>
+        </tr>
+    }
 
 </table>
