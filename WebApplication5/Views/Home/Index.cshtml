@@ -174,16 +174,20 @@
     var canvas = document.getElementById('photoGal');
     var context = canvas.getContext('2d');
     var imageObj = new Image();
+
     imageObj.onload = function () {
         context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, 0, 0, 800, 400);
     };
     imageObj.src = photoArray[0];
+
     function cycleImage() {
         // Get the canvas
         var canvas = document.getElementById('photoGal');
         var context = canvas.getContext('2d');
+      
         // Allocate a new image object
         var imageObj = new Image();
+
         // Cycle to the next image, set the image object
         imageObj.src = photoArray[photoIndex % photoArray.length];
         photoIndex++;
