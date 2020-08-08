@@ -18,10 +18,11 @@
             <input type="submit" value="Search">
         </div>
     </form>
+
 </div>
 
 
-<form role="form"  action="/FlightBoards/displayFlights" method="post">
+<form role="form" action="/FlightBoards/displayFlights" method="post">
     @foreach (var item in Model)
     {
         <div class="form-group">
@@ -37,16 +38,25 @@
         var val = [];
         $(':checkbox:checked').each(function (i) {
             val[i] = $(this).val();
-        
+
         });
         window.location = "/FlightBoards/displayFlights?names=" + val;
-      
+
     }
 
 </script>
 
- @if (Session["name"].ToString().Contains(" Admin"))
- {
+@if (Session["name"].ToString().Contains(" Admin"))
+{
+    <br />
+    <form role="form" action="/FlightBoards/groupBy" method="post">
+        <input type="submit" value="Flights group by Flightboards">
+    </form>
+    <br />
+    <form role="form" action="/FlightBoards/join" method="post">
+        <input type="submit" value="join">
+    </form>
+    <br />
     <table class="table">
         <tr>
             <th>
@@ -61,15 +71,15 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.boardName)
                 </td>
-                
-                 <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.flightBoardID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.flightBoardID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.flightBoardID })
-                 </td>
-                
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.flightBoardID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.flightBoardID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.flightBoardID })
+                </td>
+
             </tr>
         }
 
     </table>
- }
+}

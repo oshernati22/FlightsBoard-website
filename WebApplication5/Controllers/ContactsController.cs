@@ -138,7 +138,7 @@ namespace WebApplication5.Controllers
             return RedirectToAction("Contact", "Home");
         }
        
-        public ActionResult Search(string name)
+        public ActionResult Search(string name,string email,string subject)
         {
             List<Contact> contacts = new List<Contact>();
             if (name == null || name == "")
@@ -147,7 +147,7 @@ namespace WebApplication5.Controllers
             {
                 foreach (Contact c in db.contact)
                 {
-                    if (c.name == name)
+                    if ((c.name == name) && (c.email == email) && (c.subject == subject) )
                     {
                         contacts.Add(c);
                     }

@@ -178,6 +178,51 @@ namespace WebApplication5.Controllers
                 return View(flights);
             }
         }
+
+        public ActionResult groupBy()
+        {
+           var flightByID =
+              from u in db.Flight
+                group u by u.flightBoard into g
+
+                   select new { flightBoard = g.Key, count = g.Count(), g.FirstOrDefault().flightBoardID };
+                var group = new List<Flight>();
+                foreach (var t in flightByID)
+                {
+                group.Add(new Flight()
+                {
+                    flightBoard = t.flightBoard,
+                    flightNumber = t.count
+                    });
+                }
+
+                return View(group);
+            
+        }
+
+        public ActionResult join()
+        {
+
+            var join = (
+            from u in db.Flight
+            join p in db.Flight on u.flightBoardID equals p.flightAttendantID
+
+            select new { u.flightBoardID, u.flightAttendantID, p.flightBoard, u.flightNumber, u.flightAttendant }).Distinct();
+
+            var UserList = new List<Flight>();
+            foreach (var t in join)
+            {
+                UserList.Add(new Flight()
+                {
+                    flightBoard = t.flightBoard,
+                    flightNumber = t.flightNumber,
+                    flightAttendant = t.flightAttendant,
+
+                });
+            }
+            return View(UserList);
+        }
+            
     }
 
 

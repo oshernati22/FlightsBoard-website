@@ -187,10 +187,14 @@
     <Content Include="resources\7ef1e60b0ac83133ce577325f3ba4eba.jpg" />
     <Content Include="resources\British-Airways.jpg" />
     <Content Include="resources\elal.jpg" />
+    <Content Include="resources\london.jpg" />
+    <Content Include="resources\ny.jpg" />
     <Content Include="resources\pexels-photo-4429557.jpeg" />
     <Content Include="resources\plane-841441_1280.jpg" />
+    <Content Include="resources\santo.jpg" />
     <Content Include="resources\thoughtful-asian-woman-using-photo-camera-on-blue-background-4429566 %281%29.jpg" />
     <Content Include="resources\TripAdvisor_for_Restaurants_Part_3-fb.png" />
+    <Content Include="resources\vid.mp4" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -359,6 +363,8 @@
     <Content Include="Views\Users\Search.cshtml" />
     <Content Include="Views\FlightBoards\displayFlights.cshtml" />
     <Content Include="Views\FlightBoards\SearchFlights.cshtml" />
+    <Content Include="Views\FlightBoards\groupBy.cshtml" />
+    <Content Include="Views\FlightBoards\join.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
