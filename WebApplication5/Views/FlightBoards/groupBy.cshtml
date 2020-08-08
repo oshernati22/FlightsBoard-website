@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebApplication5.Models.Flight>
+
+@{
+    ViewBag.Title = "groupBy";
+}
+
+<h2>groupBy</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.flightAttendant.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.flightBoard.boardName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.plane.company)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.flightNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.from)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.to)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.flightAttendant.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.flightBoard.boardName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.plane.company)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.flightNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.from)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.to)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.flightId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.flightId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.flightId })
+        </td>
+    </tr>
+}
+
+</table>

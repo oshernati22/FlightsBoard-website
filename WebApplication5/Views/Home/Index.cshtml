@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 <style>
@@ -118,14 +117,13 @@
         // Get the canvas
         var canvas = document.getElementById('photoGal');
         var context = canvas.getContext('2d');
-
+      
         // Allocate a new image object
         var imageObj = new Image();
 
         // Cycle to the next image, set the image object
         imageObj.src = photoArray[photoIndex % photoArray.length];
         photoIndex++;
-
         // Draw!
         context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, 0, 0, 800, 400);
     }
