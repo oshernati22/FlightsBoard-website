@@ -124,7 +124,7 @@ namespace WebApplication5.Controllers
             base.Dispose(disposing);
         }
 
-       
+       [HttpPost]
         public ActionResult setMessagesDetails(String name, String email, String subject, String message)
         {
             Contact contact = new Contact();
@@ -134,8 +134,7 @@ namespace WebApplication5.Controllers
             contact.messenge=message;
             db.contact.Add(contact);
             db.SaveChanges();
-            TempData["Message"] = "Success";
-            return RedirectToAction("Contact", "Home");
+            return Json("succsues", JsonRequestBehavior.AllowGet);
         }
        
         public ActionResult Search(string name,string email,string subject)

@@ -96,9 +96,76 @@
         </div>
     </div>
 </div>
+<br />
 <div style="width: 100%; height: 100% margin: auto; text-align:center">
     <canvas id="photoGal" height="400px" width="800px" onclick="cycleImage()"> </canvas>
 </div>
+<br />
+<br />
+<div class="weatherWidget"></div>
+<div class="weatherWidget2"></div>
+<div class="weatherWidget3"></div>
+<script>
+    window.weatherWidgetConfig = window.weatherWidgetConfig || [];
+    window.weatherWidgetConfig.push({
+        selector: ".weatherWidget",
+        apiKey: "PUBLIC_WIDGET_KEY", //lots of usage? Sign up for your personal key
+        location: "London, UK", //enter an addres
+        unitGroup: "metric", //"us" or "metric"
+        forecastDays: 5, //how many days forecast to show
+        title: "London,UK", //optional title to show in the
+        showTitle: true,
+        showConditions: true
+    });
+
+    (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<script>
+    window.weatherWidgetConfig = window.weatherWidgetConfig || [];
+    window.weatherWidgetConfig.push({
+        selector: ".weatherWidget2",
+        apiKey: "PUBLIC_WIDGET_KEY", //lots of usage? Sign up for your personal key
+        location: "Tel Aviv, Israel", //enter an addres
+        unitGroup: "metric", //"us" or "metric"
+        forecastDays: 5, //how many days forecast to show
+        title: "Tel Aviv, Israel", //optional title to show in the
+        showTitle: true,
+        showConditions: true
+    });
+
+    (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<script>
+    window.weatherWidgetConfig = window.weatherWidgetConfig || [];
+    window.weatherWidgetConfig.push({
+        selector: ".weatherWidget3",
+        apiKey: "PUBLIC_WIDGET_KEY", //lots of usage? Sign up for your personal key
+        location: "Sao Paulo, Brazil", //enter an addres
+        unitGroup: "metric", //"us" or "metric"
+        forecastDays: 5, //how many days forecast to show
+        title: "Sao Paulo, Brazil", //optional title to show in the
+        showTitle: true,
+        showConditions: true
+    });
+
+    (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
 <script>
     var photoIndex = 1;
     var photoArray = ["/resources/ny.jpg",

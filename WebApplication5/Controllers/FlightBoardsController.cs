@@ -200,7 +200,7 @@ namespace WebApplication5.Controllers
             
         }
 
-        public ActionResult join()
+        public ActionResult joinFlight()
         {
 
             var join = (
@@ -222,7 +222,33 @@ namespace WebApplication5.Controllers
             }
             return View(UserList);
         }
-            
+
+        public ActionResult joinPlane()
+        {
+
+            var join = (
+            from u in db.Flight
+            join p in db.Flight on u.flightBoardID equals p.planeID
+
+            select new { u.flightBoardID, u.planeID, p.flightBoard, u.flightNumber, u.plane }).Distinct();
+
+            var UserList = new List<Flight>();
+            foreach (var t in join)
+            {
+                UserList.Add(new Flight()
+                {
+                    flightBoard = t.flightBoard,
+                    flightNumber = t.flightNumber,
+                    plane = t.plane,
+
+                });
+            }
+            return View(UserList);
+        }
+
+
+
+
     }
 
 
