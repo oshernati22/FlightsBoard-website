@@ -26,5 +26,11 @@ namespace WebApplication5.Controllers
 
             return View();
         }
+        public ActionResult forecast()
+        {
+            ViewBag.Message = "Your forecast page.";
+
+            return View();
+        }
     }
 }

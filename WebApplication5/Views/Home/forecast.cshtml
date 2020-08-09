@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "forecast";
+}
+
+<div class="contianer">
+
+    <div class="jumbotron" style="background-image:url()">
+        <h1>Forecast </h1>
+        <hr class="my-4">
+        <p>One of the most important factors in planning a trip is considering the weather, here you can plan your trip according to the weather</p>
+        <div class="row">
+            <div class="col-md-12 col-sm-3">
+                <div class="list-group">
+                    <button type="button" class="list-group-item list-group-item-action">Porta ac consec</button>
+                    <button type="button" onclick="getData(this.value)" value="Tel Aviv, Israel" class="list-group-item list-group-item-action">Tel Aviv</button>
+                    <button type="button" onclick="getData(this.value)" value="New York, USA" class="list-group-item list-group-item-action">New YOrk</button>
+                    <button type="button" onclick="getData(this.value)" value="Moscow, Russia" class="list-group-item list-group-item-action">Mosscow</button>
+
+
+                </div>
+                <aside>
+                    <p>
+                        "this website is very cool and easy for using, wonderful! " maya.k
+                    </p>
+                </aside>
+
+
+                <div class="weatherWidget"></div>
+                <br />
+                <br />
+                <div style="width: 100%; height: 100% margin: auto; text-align:center">
+                    <canvas id="photoGal" height="400px" width="800px" onclick="cycleImage()"> </canvas>
+                </div>
+                <br />
+                <br />
+
+
+            </div>
+            </div>
+
+    </div>
+
+</div>
+
+<script>
+
+        window.weatherWidgetConfig = window.weatherWidgetConfig || [];
+        window.weatherWidgetConfig.push({
+            selector: ".weatherWidget",
+            apiKey: "PUBLIC_WIDGET_KEY", //lots of usage? Sign up for your personal key
+            location: loc, //enter an addres
+            unitGroup: "metric", //"us" or "metric"
+            forecastDays: 14, //how many days forecast to show
+            title: loc, //optional title to show in the
+            showTitle: true,
+            showConditions: true
+        });
+
+        (function () {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    
+    
+    
+    var photoIndex = 2;
+    var photoArray = ["/resources/ny.jpg",
+        "/resources/london.jpg",
+        "/resources/santo.jpg"];
+    var canvas = document.getElementById('photoGal');
+    var context = canvas.getContext('2d');
+    var imageObj = new Image();
+
+    imageObj.onload = function () {
+        context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, 0, 0, 800, 400);
+    };
+    imageObj.src = photoArray[1];
+
+    function cycleImage() {
+        // Get the canvas
+        var canvas = document.getElementById('photoGal');
+        var context = canvas.getContext('2d');
+
+        // Allocate a new image object
+        var imageObj = new Image();
+
+        // Cycle to the next image, set the image object
+        imageObj.src = photoArray[photoIndex % photoArray.length];
+        
+        // Draw!
+        context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, 0, 0, 800, 400);
+    }
+</script>
+

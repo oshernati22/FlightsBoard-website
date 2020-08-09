@@ -31,6 +31,7 @@
                             <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link", @style = "color:grey" })</li>
                             <li class="nav-item">@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link", @style = "color:grey" })</li>
                             <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link", @style = "color:grey" })</li>
+                            <li class="nav-item">@Html.ActionLink("Forecast", "forecast", "Home", null, new { @class = "nav-link", @style = "color:grey" })</li>
                             @if (Session["name"] != null)
                             {
                                 <li class="nav-item">@Html.ActionLink("Flights Board", "Index", "FlightBoards", null, new { @class = "nav-link", @style = "color:grey" })</li>
