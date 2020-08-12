@@ -245,9 +245,9 @@
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="resources\1_-exC8NjmO5QKyM_G3n6_Tw.jpeg" />
     <Content Include="resources\1_IueLj5pu4PqHZMQO1slOQg.jpeg" />
     <Content Include="resources\7ef1e60b0ac83133ce577325f3ba4eba.jpg" />
@@ -379,7 +379,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
