@@ -432,6 +432,7 @@
     <Content Include="Views\FlightBoards\joinPlane.cshtml" />
     <Content Include="Views\FlightBoards\joinFlight.cshtml" />
     <Content Include="Views\Home\forecast.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
