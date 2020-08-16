@@ -5,21 +5,18 @@
 
 <div class="contianer">
 
-    <div class="jumbotron" style="background-image:url()">
+    <div class="jumbotron" style="background-image:url('../../resources/sunset-1757593_1920 (1).jpg');background-size:cover; opacity: 0.9;">
         <h1>Forecast </h1>
+        <h6>One of the most important factors in planning a trip is considering the weather, here you can plan your trip according to the weather</h6>
         <hr class="my-4">
-        <p>One of the most important factors in planning a trip is considering the weather, here you can plan your trip according to the weather</p>
+
         <div class="row">
             <div class="col-md-10 col-sm-3">
-                <!-- weather widget start -->
-                <!-- Card -->
-                <div class="card weather-card">
-
-                    <!-- Card content -->
+                <div class="card weather-card" style="background-color:rgba(241, 241, 241, 0.29)">
                     <div class="card-body pb-3">
-                        <!-- Title -->
                         <div class="dropdown">
-                            <a href="#"><h4 class="card-title font-weight-bold dropdown-toggle" id="toggle_weather"><s href="#" style="text-decoration: underline;" id="weather_title">Holon</s> <div style="float: right;" id="weather_country">IL</div></h4></a>
+                            <a href="#"><h4 class="card-title font-weight-bold dropdown-toggle" id="toggle_weather"><s href="#" style="text-decoration: underline;" id="weather_title"></s> <div style="float: right;" id="weather_country">IL</div></h4></a>
+                            <a href="/Home/googleMap">Open city on map</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="weather">
                                 <input class="form-control" id="myInput" type="text" placeholder="Choose a city.." style="padding: 20px;margin-top: -7px;border: 0;border-radius: 0;background: #f1f1f1;">
                                 <a class="dropdown-item" href="#">London</a>
@@ -71,6 +68,7 @@
                             <div class="d-flex justify-content-between mb-4">
                                 <p>💧 <span id="weather_humidity">3</span>% Humidity</p>
                                 <p>💨 <span id="weather_winds"></span> hm/h Winds</p>
+                                <p>💨 <span id="weather_winds"></span> hm/h Winds</p>
                             </div>
                             <div class="progress md-progress">
                                 @{
@@ -86,64 +84,15 @@
                             </ul>
                         </div>
                     </div>
-
+                    <div style="width: 100%; height: 100% margin: auto; text-align:center">
+                        <canvas id="photoGal" height="400px" width="800px"> </canvas>
+                    </div>
                 </div>
                 <!-- Card -->
-
-                <br />
-                <br />
-
-                <div style="width: 100%; height: 100% margin: auto; text-align:center">
-                    <canvas id="photoGal" height="400px" width="800px" onclick="cycleImage()"> </canvas>
-                </div>
-                <br />
-                <br />
-
-
             </div>
         </div>
-
-
-
     </div>
-
-
 </div>
-
-
-<script>
-    var photoIndex = 0;
-    var photoArray = ["/resources/ny.jpg",
-        "/resources/london.jpg",
-        "/resources/santo.jpg"];
-    var canvas = document.getElementById('photoGal');
-    var context = canvas.getContext('2d');
-    var imageObj = new Image();
-    imageObj.onload =
-        function () {
-            context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, 0, 0, 800, 400);
-        };
-    imageObj.src = photoArray[1];
-
-    function cycleImage() {
-        // Get the canvas
-        var canvas = document.getElementById('photoGal');
-        var context = canvas.getContext('2d');
-        // Allocate a new image object
-        var imageObj = new Image();
-        // Cycle to the next image, set the image object
-        imageObj.src = photoArray[photoIndex % photoArray.length];
-        photoIndex++;
-
-        // Draw!
-        context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, 0, 0, 800, 400);
-    }
-</script>
-
-
-
-
-</script>
 
 @section Scripts
 {

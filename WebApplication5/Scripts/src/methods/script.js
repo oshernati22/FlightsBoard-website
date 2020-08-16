@@ -137,9 +137,10 @@
         });
     }
 
-    getWeather("Holon");
+    getWeather("Tel Aviv");
 
     $('#weather a').click(function () {
+        changePhoto($(this).html());
         getWeather($(this).html());
         $("#weather").hide();
     });
@@ -182,3 +183,47 @@
     });
 
 });
+
+
+ var photoIndex = 0;
+var photoArray = ["/resources/tel-aviv-3621085_1920.jpg",
+    "/resources/london-1900570_1920.jpg",
+    "/resources/skyscraper-3032786_1920.jpg", "/resources/burj-al-arab-690768_1920.jpg"];
+    var canvas = document.getElementById('photoGal');
+    var context = canvas.getContext('2d');
+    var imageObj = new Image();
+    imageObj.onload =
+        function () {
+            context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, 0, 0, 800, 400);
+        };
+    function changePhoto(name) {
+
+        switch (name) {
+                case name = "Tel Aviv":
+                    imageObj.src = photoArray[0];
+                    break;
+                case name = "London":
+                    imageObj.src = photoArray[1];
+                    break;
+                case name = "New York":
+                    imageObj.src = photoArray[2];
+                    break;
+                case name = "Dubai":
+                    imageObj.src = photoArray[3];
+                    break;
+                default:
+                    imageObj.src = photoArray[0];
+        }
+        
+    }
+
+    
+
+
+
+
+
+
+
+
+
