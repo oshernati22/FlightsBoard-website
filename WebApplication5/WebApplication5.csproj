@@ -305,6 +305,7 @@
     <Content Include="Scripts\src\methods\disableEventListeners.js" />
     <Content Include="Scripts\src\methods\enableEventListeners.js" />
     <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\script.js" />
     <Content Include="Scripts\src\methods\update.js" />
     <Content Include="Scripts\src\modifiers\applyStyle.js" />
     <Content Include="Scripts\src\modifiers\arrow.js" />
@@ -433,6 +434,7 @@
     <Content Include="Views\FlightBoards\joinFlight.cshtml" />
     <Content Include="Views\Home\forecast.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\googleMap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

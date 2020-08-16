@@ -12,6 +12,10 @@ namespace WebApplication5.Controllers
         {
             return View();
         }
+        public ActionResult googleMap()
+        {
+            return View();
+        }
 
         public ActionResult About()
         {
