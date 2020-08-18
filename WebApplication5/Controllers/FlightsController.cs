@@ -28,12 +28,19 @@ namespace WebApplication5.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flight flight = db.Flight.Find(id);
-            if (flight == null)
+            var flights = db.Flight.Include(f => f.flightAttendant).Include(f => f.flightBoard).Include(f => f.plane);
+            Flight fl = null;
+            foreach (Flight flight in flights)
+                if (flight.flightId == id)
+                {
+                    fl = flight;
+                }
+
+            if (fl == null)
             {
                 return HttpNotFound();
             }
-            return View(flight);
+            return View(fl);
         }
 
         // GET: Flights/Create

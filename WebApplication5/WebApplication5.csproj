@@ -251,6 +251,7 @@
     <Content Include="resources\1_-exC8NjmO5QKyM_G3n6_Tw.jpeg" />
     <Content Include="resources\1_IueLj5pu4PqHZMQO1slOQg.jpeg" />
     <Content Include="resources\7ef1e60b0ac83133ce577325f3ba4eba.jpg" />
+    <Content Include="resources\airplane-983991_1920.jpg" />
     <Content Include="resources\British-Airways.jpg" />
     <Content Include="resources\burj-al-arab-690768_1920.jpg" />
     <Content Include="resources\elal.jpg" />
@@ -437,6 +438,7 @@
     <Content Include="Views\Home\forecast.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\googleMap.cshtml" />
+    <Content Include="Views\FlightBoards\Reservation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

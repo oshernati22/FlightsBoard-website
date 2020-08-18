@@ -4,78 +4,99 @@
     ViewBag.Title = "displayFlights";
 }
 
+<div class="contianer" style="padding-top:7px">
+    <div class="jumbotron" style="background-image:url(https://cdn.pixabay.com/photo/2019/07/06/03/26/yellowstone-4319675_1280.jpg);background-size:cover;background-repeat:no-repeat;">
+        <h1>Find the best flight !</h1>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-md-12 col-sm-6 ">
 
-<h2>displayFlights</h2>
+                @if (Session["name"].ToString().Contains(" Admin"))
+                {
+                    <p>
+                        @Html.ActionLink("Create New", "Create")
+                    </p>
+                }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<div>
-    <form role="form" action="/FlightBoards/SearchFlights" method="post">
-        <div class="form-group">
-            <input type="text" name="from" id="from" placeholder="Search by from">
-            <input type="text" name="to" id="to" placeholder="Search by to">
-            <input type="text" name="flightId" id="to" placeholder="Search by flight number" />
-            <input type="submit" value="Search">
-        </div>
-    </form>
+                <div>
+                    <form role="form" action="/FlightBoards/SearchFlights" method="post">
+                        <div class="form-group">
+                            <input type="text" name="from" id="from" style="border-radius: 20px 20px 20px 20px;width: 18% !important;height: 30px;" class="form-control input-sm row-cols-sm-1 d-inline-block" placeholder="Search by from">
+                            <input type="text" name="to" id="to" style="border-radius: 20px 20px 20px 20px;width: 18% !important;height: 30px;" class="form-control input-sm row-cols-sm-1 d-inline-block" placeholder="Search by to">
+                            <input type="text" name="flightId" id="to" style="border-radius: 20px 20px 20px 20px;width: 18% !important;height: 30px;" class="form-control input-sm row-cols-sm-1 d-inline-block" placeholder="Search by flight number" />
+                            <input type="text" name="boardName" id="boardName" style="border-radius: 20px 20px 20px 20px;width: 18% !important;height: 30px;" class="form-control input-sm row-cols-sm-1 d-inline-block" placeholder="Search by boardName" />
+                            <input type="submit" class="btn btn-primary " style="background-color:salmon !important;border-color:salmon;  border-radius: 20px 20px 20px 20px; height: 30px" value="Search your best flight">
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <form role="form" action="/FlightBoards/SearchByPrice" method="post">
+                        <div class="form-group">
+                            <input type="text" name="price" id="price" style="border-radius: 20px 20px 20px 20px;width: 22% !important;height: 30px;" class="form-control input-sm row-cols-sm-1 d-inline-block" placeholder="Search by price" />
+                            <input type="submit" class="btn btn-primary " style="background-color:royalblue !important;border-radius: 20px 20px 20px 20px; height: 30px;" value="Show the limit price">
+                        </div>
+                    </form>
+                </div>
+
+                            <table class="table" style="background-color:rgba(255, 255, 255, 0.60)">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.flightAttendant)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.flightBoard.boardName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.plane)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.flightNumber)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.from)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.to)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.price)
+                                    </th>
+                                    <th></th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.flightAttendant.name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.flightBoard.boardName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.plane.company)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.flightNumber)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.from)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.to)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.price)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Order Now", "Details", "Flights", new { id = item.flightId },null)
+
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
+                </div>
+            </div>
 </div>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.flightAttendant.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.flightBoard.boardName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.plane.company)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.flightNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.from)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.to)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.flightAttendant.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.flightBoard.boardName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.plane.company)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.flightNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.from)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.to)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.price)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.flightId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.flightId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.flightId })
-            </td>
-        </tr>
-    }
-
-</table>

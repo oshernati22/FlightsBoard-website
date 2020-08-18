@@ -144,21 +144,21 @@ namespace WebApplication5.Controllers
 
         public ActionResult displayFlights(String names)
         {
-            List<string> boardnames = names.Split(',').ToList();
+            List<String> boardnames = names.Split(',').ToList();
             List<Flight> flights = new List<Flight>();
             foreach (String boardname in boardnames)
             {
-                foreach (FlightBoard c in db.FlightBoard)
+                foreach (Flight c in db.Flight.Include(f => f.flightAttendant).Include(f => f.flightBoard).Include(f => f.plane))
                 {
-                    if (c.boardName == boardname)
-                        flights.AddRange(c.flightsList);
+                    if (c.flightBoardID == Int32.Parse(boardname))
+                        flights.Add(c);
                 }
             }
             return View(flights);
 
         }
 
-        public ActionResult SearchFlights(string from, string to, String flightId)
+        public ActionResult SearchFlights(string from, string to, String flightId,String boardName) //מאי לשנות את הפונקציה כדי שהיא תעבודה
         {
             List<Flight> flights = new List<Flight>();
             if ((from == null || from == "") || (to == null || to == "") || (flightId == null || flightId == ""))
@@ -178,6 +178,14 @@ namespace WebApplication5.Controllers
                 return View(flights);
             }
         }
+        public ActionResult SearchByPrice(int price)
+        {
+            List<Flight> flights = new List<Flight>();
+            //  מאיי להמשיך פה אבא
+                return View(flights);
+            
+        }
+
 
         public ActionResult groupBy()
         {

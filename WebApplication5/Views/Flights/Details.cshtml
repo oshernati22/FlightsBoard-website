@@ -4,71 +4,78 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="contianer" style="padding-top:7px">
+    <div class="jumbotron" style="background-image:url(https://cdn.pixabay.com/photo/2020/04/17/12/28/cloud-5055011_1280.jpg)">
+        <div class="row">
+            <div class="col-md-12 col-sm-6">
+                <h1>Order Details </h1>
+                <div>
 
-<div>
-    <h4>Flight</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.flightAttendant.name)
-        </dt>
+                    <hr />
+                    <dl class="dl-horizontal" style="opacity:0.7">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.flightAttendant.name)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.flightAttendant.name)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.flightAttendant.name)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.flightBoard.boardName)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.flightBoard.boardName)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.flightBoard.boardName)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.flightBoard.boardName)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.plane.company)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.plane.company)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.plane.company)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.plane.company)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.flightNumber)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.flightNumber)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.flightNumber)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.flightNumber)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.from)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.from)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.from)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.from)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.to)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.to)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.to)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.to)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.price)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.price)
+                        </dd>
+                        <dd>
+                            @Html.ActionLink("Click FOR cHECKOUT", "Payment", "Flights")
+                        </dd>
 
-    </dl>
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.flightId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
