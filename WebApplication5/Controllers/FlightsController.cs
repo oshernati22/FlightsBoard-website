@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication5.Models;
@@ -20,6 +22,12 @@ namespace WebApplication5.Controllers
             var flight = db.Flight.Include(f => f.flightAttendant).Include(f => f.flightBoard).Include(f => f.plane);
             return View(flight.ToList());
         }
+        // GET: Payment
+        public ActionResult payment()
+        {
+            return View();
+        }
+
 
         // GET: Flights/Details/5
         public ActionResult Details(int? id)
@@ -162,6 +170,43 @@ namespace WebApplication5.Controllers
                     }
                 }
                 return View(flights);
+            }
+        }
+        
+        public JsonResult sendEmail(string email)
+        {
+            bool result = false;
+            result = sendMail(email, "Your order has been received by the system", "<p> Hi Igor <br /> Your order has been received by the system !! <br /> Regards easyFlights team !</p>");
+            return Json(result, JsonRequestBehavior.AllowGet);
+           
+        }
+
+        public bool sendMail(string toEmail,string subject,string body)
+        {
+            try
+            {
+                string senderEmail = "easypeasyflights@gmail.com";
+                string senderPass = "abcdefG1";
+
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                client.EnableSsl = true;
+                client.Timeout = 100000;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(senderEmail,senderPass);
+
+                MailMessage mailMessage = new MailMessage(senderEmail, toEmail, subject, body);
+                mailMessage.IsBodyHtml = true;
+                mailMessage.BodyEncoding = UTF8Encoding.UTF8;
+                client.Send(mailMessage);
+
+
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
     }

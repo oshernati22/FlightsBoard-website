@@ -439,6 +439,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\googleMap.cshtml" />
     <Content Include="Views\FlightBoards\Reservation.cshtml" />
+    <Content Include="Views\Flights\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
