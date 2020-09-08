@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Facebook;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Dynamic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -71,13 +73,30 @@ namespace WebApplication5.Controllers
             {
                 db.Flight.Add(flight);
                 db.SaveChanges();
+                facebook(flight.from,flight.to);
                 return RedirectToAction("Index");
             }
 
             ViewBag.flightAttendantID = new SelectList(db.FlightAttendant, "flightAttendantID", "name", flight.flightAttendantID);
             ViewBag.flightBoardID = new SelectList(db.FlightBoard, "flightBoardID", "boardName", flight.flightBoardID);
             ViewBag.planeID = new SelectList(db.Plane, "planeID", "company", flight.planeID);
+
             return View(flight);
+        }
+        public void facebook(String from ,String to )
+        {
+            dynamic messagePost = new ExpandoObject();
+            messagePost.message = "Ladies and Gentlemen New Flight upload to our site from" + from +"to" + to + "Hurry up to sign up";
+            
+            string acccessToken = "EAAJqxzH0lIkBADIZCUcNoXJNv3dluvX7QHbilPOAfLfts0yoyWSpI6EihmFvPXRrgy5T0PExsxlZBT4WvKjGdkw6WlMXQbkpjbE4jtUMGrYEaNA5CDD3nhh08tjLYX5dkdii5pkOZBWMiIDMc0qHehA1Q4mdURsILECSeoNVTnGa4x0xdVxpmw5Iv6FZBgsTNJHfbpEVbAZDZD";
+            FacebookClient appp = new FacebookClient(acccessToken); try
+            {
+                var postId = appp.Post("116014096899657" + "/feed", messagePost);
+            }
+            catch (FacebookOAuthException ex)
+            { //handle oauth exception } catch (FacebookApiException ex) { //handle facebook exception
+            }
+            
         }
 
         // GET: Flights/Edit/5
