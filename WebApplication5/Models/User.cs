@@ -21,7 +21,8 @@ namespace WebApplication5.Models
         [DataType(DataType.Password)]
         [Compare(nameof(password), ErrorMessage = "The Password didn't match.")]
         public String confirmpassword { get; set; }
-
+        public Dictionary<string, int> mapOFlightboards;
+        public String bestFlightBoard { get; set; }
 
     }
 }

@@ -157,6 +157,19 @@ namespace WebApplication5.Controllers
             return View(flights);
 
         }
+        public ActionResult displayFlight(String name)
+        {
+           
+            List<Flight> flights = new List<Flight>();
+                foreach (Flight c in db.Flight.Include(f => f.flightAttendant).Include(f => f.flightBoard).Include(f => f.plane))
+                {
+                    if (c.flightBoard.boardName == name)
+                        flights.Add(c);
+                }
+            
+            return View(flights);
+
+        }
 
         public ActionResult SearchFlights(string from, string to, String flightId,String boardName) //מאי לשנות את הפונקציה כדי שהיא תעבודה
         {

@@ -50,7 +50,30 @@ namespace WebApplication5.Controllers
             {
                 return HttpNotFound();
             }
+            if (Session["User"] != null)
+            {
+                if ((Session["User"] as User).mapOFlightboards == null)
+                {
+                    (Session["User"] as User).mapOFlightboards = new Dictionary<string, int>();
+                    (Session["User"] as User).mapOFlightboards.Add(fl.flightBoard.boardName, 0);
+                    (Session["User"] as User).mapOFlightboards[fl.flightBoard.boardName]++;
+                }
+                else
+                {
+                    if ((Session["User"] as User).mapOFlightboards.ContainsKey(fl.flightBoard.boardName) == false)
+                    {
+                        (Session["User"] as User).mapOFlightboards.Add(fl.flightBoard.boardName, 0);
+                        (Session["User"] as User).mapOFlightboards[fl.flightBoard.boardName]++;
+                    }
+                    else
+                    {
+                        (Session["User"] as User).mapOFlightboards[fl.flightBoard.boardName]++;
+                    }
+                }
+            }
+            
             return View(fl);
+
         }
 
         // GET: Flights/Create

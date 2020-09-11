@@ -229,6 +229,10 @@
     <Compile Include="Migrations\202007311848088_osheraddclass.designer.cs">
       <DependentUpon>202007311848088_osheraddclass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009110635362_Migration11.cs" />
+    <Compile Include="Migrations\202009110635362_Migration11.designer.cs">
+      <DependentUpon>202009110635362_Migration11.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Flight.cs" />
@@ -443,6 +447,7 @@
     <Content Include="Views\Home\googleMap.cshtml" />
     <Content Include="Views\FlightBoards\Reservation.cshtml" />
     <Content Include="Views\Flights\Payment.cshtml" />
+    <Content Include="Views\FlightBoards\displayFlight.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -476,6 +481,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007311848088_osheraddclass.resx">
       <DependentUpon>202007311848088_osheraddclass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009110635362_Migration11.resx">
+      <DependentUpon>202009110635362_Migration11.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

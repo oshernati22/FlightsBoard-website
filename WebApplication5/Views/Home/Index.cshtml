@@ -8,6 +8,40 @@
         border-width: 2px;
     }
 </style>
+@if (Session["name"] != null)
+{
+<input type="hidden" id="someName" value="@Session["best"]" />
+    <script>
+       
+     
+        window.onload = setTimeout(function start() {
+            var best = $("#someName").val();
+
+            var flag = Swal.fire({
+
+                html:
+                    'We noticed you liked the company ' + '' + best + ' ' +
+                    'To go to the flightboard click Great!',
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonText:
+                    '<i class="fa fa-thumbs-up"></i> Great!',
+                confirmButtonAriaLabel: 'Thumbs up, great!',
+                cancelButtonText:
+                    '<i class="fa fa-thumbs-down"></i>',
+                cancelButtonAriaLabel: 'Thumbs down'
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    window.location = "/FlightBoards/displayFlight?name=" + best;
+                }
+            });
+        }, 10000);
+
+    </script>
+}
+
 <div class="contianer" style="padding-top:7px">
 
     <div class="jumbotron" style="background-image:url(../../resources/plane-841441_1280.jpg)">

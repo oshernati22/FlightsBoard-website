@@ -54,7 +54,7 @@ namespace WebApplication5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userID,type,name,password,confirmpassword")] User user)
+        public ActionResult Create([Bind(Include = "userID,type,name,password,confirmpassword,bestFlightBoard")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace WebApplication5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userID,type,name,password")] User user)
+        public ActionResult Edit([Bind(Include = "userID,type,name,password,bestFlightBoard")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -172,14 +172,29 @@ namespace WebApplication5.Controllers
             }
             else if (flag == false)
             {
+                Session["User"] = db.User.Where(user => user.name == name && user.password == password && user.type == flag).FirstOrDefault() ;
+                string temp = (Session["User"] as User).bestFlightBoard;
+                Session["best"] =temp ;
                 Session["name"] = name;
                 return RedirectToAction("Index", "FlightBoards");
             }
+
             return View();
 
         }
         public ActionResult logOut()
         {
+            string best;
+            if ((Session["User"] as User).mapOFlightboards != null)
+            {
+                 best = (Session["User"] as User).mapOFlightboards.FirstOrDefault(x => x.Value == (Session["User"] as User).mapOFlightboards.Values.Max()).Key;
+            }
+            else {
+               best = "ELAL";
+            }
+
+            (Session["User"] as User).bestFlightBoard = best;
+            this.Edit((Session["User"] as User));
             Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
