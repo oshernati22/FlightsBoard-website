@@ -448,6 +448,8 @@
     <Content Include="Views\FlightBoards\Reservation.cshtml" />
     <Content Include="Views\Flights\Payment.cshtml" />
     <Content Include="Views\FlightBoards\displayFlight.cshtml" />
+    <Content Include="Views\FlightBoards\BestFilghts.cshtml" />
+    <Content Include="Views\FlightBoards\SearchByPrice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -171,6 +171,70 @@ namespace WebApplication5.Controllers
 
         }
 
+        //public ActionResult SearchFlights(string from, string to, String flightId, String boardName)
+        // {
+        //     List<Flight> flights = new List<Flight>();
+        //     if ((from == null || from == "") && (to == null || to == "") && (flightId == null || flightId == ""))
+        //         return RedirectToAction("Index", "Flighs");
+        //     else if (from == null || from == "")
+        //     {
+        //         foreach (Flight flight in db.Flight)
+        //             //if ((to == flight.to || to == null || to == "") && (flightId == null || flightId == "" || Int32.Parse(flightId) == flight.flightId ))
+        //             //{
+        //             //    flights.Add(flight);
+        //             //}
+        //             if (to != null && to != "" && flightId != null && flightId != "")
+        //             {
+        //                 if (to == flight.to && Int32.Parse(flightId) == flight.flightId)
+        //                     flights.Add(flight);
+
+        //             }
+        //             else if ((to == null || to == "") && flightId != null && flightId != "")
+        //             {
+        //                 if (Int32.Parse(flightId) == flight.flightId)
+        //                     flights.Add(flight);
+
+        //             }
+        //             else if ((flightId == null || flightId == "") && to != null && to != "")
+        //             {
+        //                 if (to == flight.to)
+        //                     flights.Add(flight);
+
+        //             }
+
+        //     }
+        //     else if ((to == null || to == "") && (from != "") && (from != null))
+        //     {
+        //         foreach (Flight flight in db.Flight)
+        //             if (flightId != null && flightId != "")
+        //             {
+        //                 if (from == flight.from && Int32.Parse(flightId) == flight.flightId)
+        //                     flights.Add(flight);
+
+        //             }
+
+        //             else if (flightId == null || flightId == "")
+        //             {
+        //                 if (from == flight.from)
+        //                     flights.Add(flight);
+
+        //             }
+
+        //     }
+        //     else if ((flightId == null || flightId == "") && (from != "") && (from != null) && (to != "") && (to != null))
+        //     {
+        //         foreach (Flight flight in db.Flight)
+        //             if ((from == flight.from) && (to == flight.to))
+        //             {
+        //                 flights.Add(flight);
+        //             }
+
+        //     }
+        //     if (flights.Count > 0)
+        //         return View(flights);
+        //     else return RedirectToAction("Index", "Flighs");
+        // }
+
         public ActionResult SearchFlights(string from, string to, String flightId, String boardName) //search
         {
             List<Flight> flights = new List<Flight>();
@@ -181,7 +245,7 @@ namespace WebApplication5.Controllers
             else
             {
                 int intOFlightId = Int32.Parse(flightId);
-                foreach (Flight c in db.Flight)
+                foreach (Flight c in db.Flight.Include(f => f.flightAttendant).Include(f => f.flightBoard).Include(f => f.plane))
                 {
                     if ((c.from == from) && (c.to == to) && (c.flightNumber == intOFlightId))
                     {
@@ -191,11 +255,18 @@ namespace WebApplication5.Controllers
                 return View(flights);
             }
         }
-        public ActionResult SearchByPrice(int price) 
+        public ActionResult SearchByPrice(int price) //return flights under the price of the client
         {
             List<Flight> flights = new List<Flight>();
-            //  מאיי להמשיך פה אבא
-            return View(flights);
+            foreach (Flight flight in db.Flight.Include(f => f.flightAttendant).Include(f => f.flightBoard).Include(f => f.plane))
+            {
+                if (flight.price < price || flight.price == price)
+                    flights.Add(flight);
+            }
+
+            if (flights.Count > 0)
+                return View(flights);
+            else return RedirectToAction("Index", "Flighs");
 
         }
 
@@ -272,6 +343,20 @@ namespace WebApplication5.Controllers
                 });
             }
             return View(UserList);
+        }
+
+
+        public ActionResult BestFilghts()
+        {
+            List<Flight> flights = new List<Flight>();
+            Flight[] flightsTemp = db.Flight.Include(f => f.flightAttendant).Include(f => f.flightBoard).Include(f => f.plane).ToArray();
+            List<Flight> temp = flightsTemp.ToList();
+            Flight[] q = temp.OrderBy(Flight => Flight.price).ToArray();
+            for (int i = 0; i < 10; i++)
+            {
+                flights.Add(q[i]);
+            }
+            return View(flights);
         }
 
 
