@@ -125,7 +125,7 @@ namespace WebApplication5.Controllers
         }
 
        [HttpPost]
-        public ActionResult setMessagesDetails(String name, String email, String subject, String message)
+        public ActionResult setMessagesDetails(String name, String email, String subject, String message) //add message from the user
         {
             Contact contact = new Contact();
             contact.name = name;

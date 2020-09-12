@@ -50,7 +50,7 @@ namespace WebApplication5.Controllers
             {
                 return HttpNotFound();
             }
-            if (Session["User"] != null)
+            if (Session["User"] != null) //if you click on details we raise the counter in the hashmap and after you lo out we update it to next time suggestion
             {
                 if ((Session["User"] as User).mapOFlightboards == null)
                 {
@@ -106,12 +106,12 @@ namespace WebApplication5.Controllers
 
             return View(flight);
         }
-        public void facebook(String from ,String to )
+        public void facebook(String from ,String to )  //after we add aflight we posted in facebool
         {
             dynamic messagePost = new ExpandoObject();
             messagePost.message = "Ladies and Gentlemen New Flight upload to our site from" + from +"to" + to + "Hurry up to sign up";
             
-            string acccessToken = "EAAJqxzH0lIkBADIZCUcNoXJNv3dluvX7QHbilPOAfLfts0yoyWSpI6EihmFvPXRrgy5T0PExsxlZBT4WvKjGdkw6WlMXQbkpjbE4jtUMGrYEaNA5CDD3nhh08tjLYX5dkdii5pkOZBWMiIDMc0qHehA1Q4mdURsILECSeoNVTnGa4x0xdVxpmw5Iv6FZBgsTNJHfbpEVbAZDZD";
+            string acccessToken = "EAAJqxzH0lIkBALMYkPZAPwu8LUOaNxuc0uoKBby9WCCKVZAz9fN9rTO1RgxMlRMYs68ZCsiDbZCYTeqd1oMnl50wnzi50TQZCq6UEeSqbvGmhJ2TYcMUZBzDyW8z6bCOjhr6uto3WS8XW6I3zVZBspeqTeNjpOGt7bzgzVwmvkpMaZBZA9zRp48ZCVTmOE4l07rPqhYyiCf8HjwgZDZD";
             FacebookClient appp = new FacebookClient(acccessToken); try
             {
                 var postId = appp.Post("116014096899657" + "/feed", messagePost);
@@ -215,7 +215,7 @@ namespace WebApplication5.Controllers
             }
         }
         
-        public JsonResult sendEmail(string email)
+        public JsonResult sendEmail(string email) //after you pay we send confirm message to youre email
         {
             bool result = false;
             result = sendMail(email, "Your order has been received by the system", "<p> Hi Igor <br /> Your order has been received by the system !! <br /> Regards easyFlights team !</p>");
@@ -223,7 +223,7 @@ namespace WebApplication5.Controllers
            
         }
 
-        public bool sendMail(string toEmail,string subject,string body)
+        public bool sendMail(string toEmail,string subject,string body) // function that send email with smpt server
         {
             try
             {

@@ -142,7 +142,7 @@ namespace WebApplication5.Controllers
             }
         }
 
-        public ActionResult displayFlights(String names)
+        public ActionResult displayFlights(String names) // display the flights of the chosen flightboards of the client
         {
             List<String> boardnames = names.Split(',').ToList();
             List<Flight> flights = new List<Flight>();
@@ -157,7 +157,7 @@ namespace WebApplication5.Controllers
             return View(flights);
 
         }
-        public ActionResult displayFlight(String name)
+        public ActionResult displayFlight(String name) // display the flightboard flights of the suggestion functio
         {
 
             List<Flight> flights = new List<Flight>();
@@ -171,7 +171,7 @@ namespace WebApplication5.Controllers
 
         }
 
-        public ActionResult SearchFlights(string from, string to, String flightId, String boardName) //מאי לשנות את הפונקציה כדי שהיא תעבודה
+        public ActionResult SearchFlights(string from, string to, String flightId, String boardName) //search
         {
             List<Flight> flights = new List<Flight>();
             if ((from == null || from == "") || (to == null || to == "") || (flightId == null || flightId == ""))
@@ -191,7 +191,7 @@ namespace WebApplication5.Controllers
                 return View(flights);
             }
         }
-        public ActionResult SearchByPrice(int price)
+        public ActionResult SearchByPrice(int price) 
         {
             List<Flight> flights = new List<Flight>();
             //  מאיי להמשיך פה אבא

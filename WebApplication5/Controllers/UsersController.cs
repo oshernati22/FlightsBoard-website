@@ -152,9 +152,9 @@ namespace WebApplication5.Controllers
             base.Dispose(disposing);
         }
         [HttpPost]
-        public ActionResult setLoginDetails(String name,String password,String isAdmin)
+        public ActionResult setLoginDetails(String name,String password,String isAdmin) //login to the account
         {
-            Session["flights"] = db.Flight.Count();
+            Session["flights"] = db.Flight.Count();  //for the graphs of the admin //for the ds3 graphs
             Session["users"] = db.User.Count();
             Session["companies"] = db.FlightBoard.Count();
             Session["messages"] = db.contact.Count();
@@ -175,7 +175,7 @@ namespace WebApplication5.Controllers
             }
             else if (flag == false)
             {
-                Session["User"] = db.User.Where(user => user.name == name && user.password == password && user.type == flag).FirstOrDefault() ;
+                Session["User"] = db.User.Where(user => user.name == name && user.password == password && user.type == flag).FirstOrDefault() ; // for the suggestion functio
                 string temp = (Session["User"] as User).bestFlightBoard;
                 Session["best"] =temp ;
                 Session["name"] = name;
@@ -189,17 +189,19 @@ namespace WebApplication5.Controllers
         }
         public ActionResult logOut()
         {
-            string best;
-            if ((Session["User"] as User).mapOFlightboards != null)
-            {
-                 best = (Session["User"] as User).mapOFlightboards.FirstOrDefault(x => x.Value == (Session["User"] as User).mapOFlightboards.Values.Max()).Key;
-            }
-            else {
-               best = "ELAL";
-            }
+            if (Session["User"] != null){ // just if    it is regular account not admin
+                string best;
+                if ((Session["User"] as User).mapOFlightboards != null)
+                {
+                    best = (Session["User"] as User).mapOFlightboards.FirstOrDefault(x => x.Value == (Session["User"] as User).mapOFlightboards.Values.Max()).Key;
+                }
+                else {
+                    best = "ELAL";
+                }
 
             (Session["User"] as User).bestFlightBoard = best;
-            this.Edit((Session["User"] as User));
+                this.Edit((Session["User"] as User));
+            }
             Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
