@@ -154,12 +154,15 @@ namespace WebApplication5.Controllers
         [HttpPost]
         public ActionResult setLoginDetails(String name,String password,String isAdmin)
         {
-           
+            Session["flights"] = db.Flight.Count();
+            Session["users"] = db.User.Count();
+            Session["companies"] = db.FlightBoard.Count();
+            Session["messages"] = db.contact.Count();
             Boolean flag=false;
             if (isAdmin == "on")
                 flag = true;
+           
 
-            
             if (db.User.Where(user => user.name == name && user.password == password && user.type == flag).FirstOrDefault() == null) /*https://www.youtube.com/watch?v=aWX77vN1e3U */
             {
                 TempData["Message"] = "Error";
@@ -176,9 +179,11 @@ namespace WebApplication5.Controllers
                 string temp = (Session["User"] as User).bestFlightBoard;
                 Session["best"] =temp ;
                 Session["name"] = name;
+               
                 return RedirectToAction("Index", "FlightBoards");
             }
 
+            
             return View();
 
         }

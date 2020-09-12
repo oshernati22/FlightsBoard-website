@@ -159,19 +159,19 @@ namespace WebApplication5.Controllers
         }
         public ActionResult displayFlight(String name)
         {
-           
+
             List<Flight> flights = new List<Flight>();
-                foreach (Flight c in db.Flight.Include(f => f.flightAttendant).Include(f => f.flightBoard).Include(f => f.plane))
-                {
-                    if (c.flightBoard.boardName == name)
-                        flights.Add(c);
-                }
-            
+            foreach (Flight c in db.Flight.Include(f => f.flightAttendant).Include(f => f.flightBoard).Include(f => f.plane))
+            {
+                if (c.flightBoard.boardName == name)
+                    flights.Add(c);
+            }
+
             return View(flights);
 
         }
 
-        public ActionResult SearchFlights(string from, string to, String flightId,String boardName) //מאי לשנות את הפונקציה כדי שהיא תעבודה
+        public ActionResult SearchFlights(string from, string to, String flightId, String boardName) //מאי לשנות את הפונקציה כדי שהיא תעבודה
         {
             List<Flight> flights = new List<Flight>();
             if ((from == null || from == "") || (to == null || to == "") || (flightId == null || flightId == ""))
@@ -195,30 +195,37 @@ namespace WebApplication5.Controllers
         {
             List<Flight> flights = new List<Flight>();
             //  מאיי להמשיך פה אבא
-                return View(flights);
-            
+            return View(flights);
+
         }
 
 
         public ActionResult groupBy()
         {
-           var flightByID =
-              from u in db.Flight
-                group u by u.flightBoard into g
+            var flightByID =
+               from u in db.Flight
+               group u by u.flightBoard into g
 
-                   select new { flightBoard = g.Key, count = g.Count(), g.FirstOrDefault().flightBoardID };
-                var group = new List<Flight>();
-                foreach (var t in flightByID)
-                {
+               select new { flightBoard = g.Key, count = g.Count(), g.FirstOrDefault().flightBoardID };
+            var group = new List<Flight>();
+            foreach (var t in flightByID)
+            {
                 group.Add(new Flight()
                 {
                     flightBoard = t.flightBoard,
                     flightNumber = t.count
-                    });
-                }
+                });
+            }
 
-                return View(group);
-            
+            ViewBag.boardnameELAL = group[0].flightBoard.boardName;
+            ViewBag.sizeELAL = group[0].flightNumber;
+            ViewBag.boardnameBRITISH = group[1].flightBoard.boardName;
+            ViewBag.sizeBRITISH = group[1].flightNumber;
+            ViewBag.boardnameAVIANCA = group[2].flightBoard.boardName;
+            ViewBag.sizeAVIANCA = group[2].flightNumber;
+
+            return View(group);
+
         }
 
         public ActionResult joinFlight()
@@ -268,12 +275,14 @@ namespace WebApplication5.Controllers
         }
 
 
-
-
     }
 
 
-
-
+   
 }
+
+
+
+
+
 

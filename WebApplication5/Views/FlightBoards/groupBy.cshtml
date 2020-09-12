@@ -3,7 +3,9 @@
 @{
     ViewBag.Title = "groupBy";
 }
-
+<br />
+<br />
+<br />
 <h2>groupBy</h2>
 
 <p>
@@ -35,35 +37,127 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.flightAttendant.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.flightBoard.boardName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.plane.company)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.flightNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.from)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.to)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.price)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.flightId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.flightId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.flightId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.flightAttendant.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.flightBoard.boardName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.plane.company)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.flightNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.from)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.to)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.flightId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.flightId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.flightId })
+            </td>
+        </tr>
+    }
 
 </table>
+
+
+<center>
+    <h2>Main 3 Companies flights in our site </h2>
+    <!-- First Chart -->
+    <center>
+        <div id="app">
+            <div id="chart">
+                <svg id="firstSvg"></svg>
+            </div>
+            <div id="data">
+                <div id="data">
+                    <div id="data">
+                        <div id="data">
+                            <ul></ul>
+                        </div>
+                    </div>
+    </center>
+    <!-- Imports d3js libraries -->
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="https://d3js.org/d3-scale.v3.min.js"></script>
+    <script src="https://d3js.org/d3-axis.v1.min.js"></script>
+    <!-- First chart script -->
+    <script type="text/javascript">
+
+    var DATA = [
+        { id: 'd1', pop: '@ViewBag.sizeELAL', BoardName: '@ViewBag.boardnameELAL'},
+        { id: 'd2', pop: '@ViewBag.sizeBRITISH', BoardName: '@ViewBag.boardnameBRITISH'},
+        { id: 'd3', pop: '@ViewBag.sizeAVIANCA', BoardName: '@ViewBag.boardnameAVIANCA'}];
+
+
+        var margins = { top: 20, bottom: 10 };
+    var chartWidth = 800, chartHegiht = 200 - margins.top - margins.bottom;
+        var xScale = d3.scaleBand().domain(DATA.map((dataPoint) => dataPoint.BoardName)).rangeRound([0, chartWidth]).padding(0.2);
+    var yScale = d3.scaleLinear().domain([0, d3.max(DATA, data => data.pop) + 1]).range([chartHegiht, 0]);
+    var selectedData = DATA;
+    var chartContainer = d3.select('#firstSvg')
+        .attr('width', chartWidth)
+        .attr('color', 'blue')
+        .attr('height', chartHegiht + margins.top + margins.bottom)
+         .append('g');
+    var chart = chartContainer;
+    // Create the bars
+    function renderChart() {
+        chart
+            .selectAll('.bar')
+            .data(selectedData, data => data.id)
+            .enter()
+            .append('rect')
+            .classed('bar', true)
+            .attr('width', xScale.bandwidth())
+            .attr('height', data => chartHegiht - yScale(data.pop))
+            .style("fill", "blue")
+            .attr('x', data => xScale(data.BoardName))
+            .attr('y', data => yScale(data.pop));
+
+        chart
+            .selectAll('.bar')
+            .attr('color', 'blue')
+            .data(selectedData, data => data.id)
+            .exit()
+            .remove();
+        // Add Text
+        chart
+            .selectAll('.label')
+            .data(selectedData, data => data.id)
+            .enter()
+            .append('text')
+            .text(data => data.pop)
+            .attr('x', data => xScale(data.BoardName) + xScale.bandwidth() / 2)
+            .attr('y', data => yScale(data.pop) - 10)
+            .attr('color', 'blue')
+            .attr('text-anchor', 'middle')
+            .classed('label', true);
+        chart
+            .selectAll('.label')
+            .data(selectedData, data => data.id)
+            .attr('color', 'blue')
+            .exit()
+            .remove();
+    }
+    renderChart();
+    // Add x line
+    chart
+        .append('g')
+        .call(d3.axisBottom(xScale))
+        .attr('transform', `translate(0,${chartHegiht + 5})`)
+        .attr('color', 'blue');
+    var unselected = [];
+    </script>
+</center>
