@@ -1,2 +1,0 @@
-# FlightsBoard-website
-school project
